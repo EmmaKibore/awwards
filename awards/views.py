@@ -42,4 +42,18 @@ def project(request,id):
     return render(request,"all_posts/project",{"project": project})
 
 
+@login_required(login_url='/accounts/login')
+def search(request):
+    if 'project' in request.GET and request.GET["project"]:
+        title = request.GET.get("project")
+        print(title)
+        # owner = request.GET.get("project")
+        searched_projects = Project.search_project(title)
+        message = f"{title}"
+        return render(request,"all_posts/search.html", {"message": message, "projects": searched_projects})
+    else:
+        message = "There is no such project"
+        return render(request,"all_posts/search.html", {"message": message})
+
+
 # Create your views here.
