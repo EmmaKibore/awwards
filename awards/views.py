@@ -73,4 +73,22 @@ def new_prof(request):
     return render(request,'registration/new_prof.html',{"form": form,"id":id})
 
 
+@login_required(login_url='/accounts/login')
+def new_project(request):
+    current_user=request.user
+    profile= Profile.objects.filter(user=current_user.id).first()
+    if request.method == 'POST':
+        form = NewProjectForm(request.POST,request.FILES)
+        print(form)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.profile=profile
+            project.save()
+        return redirect('prof')
+    else:
+        form = NewProjectForm()
+    return render(request,'registration/new_project.html',{"form": form,"id":id})
+
+
+
 # Create your views here.
