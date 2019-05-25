@@ -55,5 +55,22 @@ def search(request):
         message = "There is no such project"
         return render(request,"all_posts/search.html", {"message": message})
 
+@login_required(login_url='/accounts/login')
+def new_prof(request):
+    current_user = request.user
+    user = User.objects.filter().first()
+    if request.method == 'POST':
+        form = NewProfForm(request.POST,request.FILES)
+        print(form.errors.as_text())
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = current_user
+            # profile=Profile.objects.update()
+            profile.save()
+        return redirect('prof')
+    else:
+        form = NewProfForm()
+    return render(request,'registration/new_prof.html',{"form": form,"id":id})
+
 
 # Create your views here.
