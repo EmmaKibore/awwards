@@ -89,6 +89,24 @@ def new_project(request):
         form = NewProjectForm()
     return render(request,'registration/new_project.html',{"form": form,"id":id})
 
+@login_required(login_url='/accounts/login')
+def new_review(request):
+    current_user=request.user
+    profile= Profile.objects.filter(user=current_user.id).first()
+    project= Project.objects.filter(profile=profile.id).first()
+    if request.method == 'POST':
+        form = ReviewForm(request.POST,request.FILES)
+        # print(form.errors.as_text())
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.project=project
+            review.save()
+        return redirect('prof')
+    else:
+        form = ReviewForm()
+    return render(request,'registration/review.html',{"form": form})
+
+
 
 
 # Create your views here.
