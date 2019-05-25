@@ -57,3 +57,13 @@ class Project(models.Model):
         # Q(profile__user__icontains=owner)
         # )
         return project
+
+
+class Review(models.Model):
+    project = models.ForeignKey(Project,on_delete=models.CASCADE,null=True)
+    design = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])
+    usability = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])
+    content = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])
+
+    def save_review(self):
+        self.save()        
