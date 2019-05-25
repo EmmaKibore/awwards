@@ -13,7 +13,7 @@ from django.db.models import Q
 
 class Profile(models.Model):
     user = models.OneToOneField(User,null=True,related_name='profile')
-    prof_pic = models.ImageField(upload_to = 'ards/',default='Profile Pic')
+    prof_pic = models.ImageField(upload_to = 'awards/',default='Profile Pic')
     bio = models.CharField(max_length=300)
     contact = models.CharField(max_length=30)
     pub_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
@@ -32,4 +32,28 @@ class Profile(models.Model):
         # user = request.user
         # profile = Profile.objects.filter(user=user).first()
         # return profile
-# Create your models here.
+
+class Project(models.Model):
+    profile = models.ForeignKey(Profile,on_delete=models.CASCADE,null=True)
+    title = models.CharField(max_length=30)
+    image = models.ImageField(upload_to = 'ards/',default='Project Image')
+    description = models.CharField(max_length=300)
+    link = models.CharField(max_length=100)
+    pub_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
+    def save_project(self):
+        self.save()
+
+    def delete_project(self):
+        self.delete()
+
+    @classmethod
+    def search_project(cls,title):
+        project = cls.objects.filter(title__icontains=title)
+        # Q(title__icontains=title) |
+        # Q(profile__user__icontains=owner)
+        # )
+        return project
