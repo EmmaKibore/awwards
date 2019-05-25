@@ -25,4 +25,21 @@ def home(request):
     return render(request,"all_posts/home.html",{"date": date, "projects": projects})
 
 
+@login_required(login_url='/accounts/login')
+def prof(request):
+    users =User.objects.all()
+
+    for user in users:
+        user=user
+        profile = Profile.objects.all()
+        projects = Project.objects.all()
+        print(user)
+    return render(request,"all_posts/prof.html",{ "user": user,"profile": profile,"projects": projects})
+
+@login_required(login_url='/accounts/login')
+def project(request,id):
+    project = Project.objects.filter(id__icontains = id)
+    return render(request,"all_posts/project",{"project": project})
+
+
 # Create your views here.
