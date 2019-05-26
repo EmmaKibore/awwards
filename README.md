@@ -14,7 +14,6 @@ Users can register a new account, log in to it, upload new projects and rate/rev
 
 ## Specifications
 
-|--------------------------|------------------------------|---------------------------------|
 |Given                     | When                         |    Then                         |
 |--------------------------|------------------------------|---------------------------------|
 |Run Page                  |Loading page                  |Displayed Posted Projects        |
@@ -38,7 +37,7 @@ This App is made with:
 * html
 
 ## Support and contact details
-If you meet any issue, have questions, ideas or concerns;please contact me on emmaKibore@gmail.com or mobile 0702499205.
+Incase of any issues or concerns, please contact through email at emmaKibore@gmail.com or mobile 0702499205.
 
 ## License & Copyright
 This project is licensed under the MIT license.Copyright (c) 2019 Emma Kibore
