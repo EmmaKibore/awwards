@@ -36,3 +36,9 @@ This App is made with:
 * Django
 * Bootstrap & css
 * html
+
+## Support and contact details
+If you meet any issue, have questions, ideas or concerns;please contact me on emmaKibore@gmail.com or mobile 0702499205.
+
+## License & Copyright
+This project is licensed under the MIT license.Copyright (c) 2019 Emma Kibore
