@@ -17,14 +17,10 @@ Users can register a new account, log in to it, upload new projects and rate/rev
 |Given                     | When                         |    Then                         |
 |--------------------------|------------------------------|---------------------------------|
 |Run Page                  |Loading page                  |Displayed Posted Projects        |
-|--------------------------|------------------------------|---------------------------------|
 |Post Project              |User click create new project |Login page                       |
-|--------------------------|------------------------------|---------------------------------|
 |User put authentication   |New project post from display |User create new project          |
-|--------------------------|------------------------------|---------------------------------|
 |Vote project              |Project vote display          |User can vote                    |
-|--------------------------|------------------------------|---------------------------------|
-|Search option             |User put project name         |Project detail displayed if found
+|Search option             |User put project name         |Project detail displayed if found|
 
 ## Technologies Used
 This App is made with:
