@@ -7,7 +7,7 @@ Users can register a new account, log in to it, upload new projects and rate/rev
 ## Setup/Installation Requirements
 * Internet connection.
 * Python 3, Django installation.
-* Clone it using git clone https://github.com/EmmaKibore/awards.git
+* Clone it using git clone https://github.com/EmmaKibore/awwards.git
 * Install Requirements using pip install -r requirements.txt
 * To start python3.6 manage.py runserver
 * Go to you browser and write localhost:8000 or 127.0.0.1:8000
