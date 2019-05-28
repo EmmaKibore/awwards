@@ -1,7 +1,7 @@
 from django import forms
 from .models import Profile,Project,Review
 
-class NewProfForm(forms.ModelForm):
+class NewProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         exclude = ['user']

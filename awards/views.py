@@ -1,10 +1,8 @@
-from django.shortcuts import render
 from django.shortcuts import render,redirect
-
 from django.http  import HttpResponse,Http404,HttpResponseRedirect
 import datetime as dt
 from django.contrib.auth.decorators import login_required
-from .forms import NewProfForm, NewProjectForm, ReviewForm
+from .forms import NewProfileForm, NewProjectForm, ReviewForm
 
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -13,7 +11,7 @@ from .serializer import ProjectSerializer,ProfileSerializer
 from rest_framework import status
 from .permissions import IsAdminOrReadOnly
 
-@login_required(login_url='/accounts/login')
+
 def home(request):
     try:
         date = dt.date.today()
@@ -22,7 +20,7 @@ def home(request):
         # overall = (project.design+project.usability+project.
     except DoesNotExist:
         raise Http404()
-    return render(request,"all_posts/home.html",{"date": date, "projects": projects})
+    return render(request,"home.html",{"date": date, "projects": projects})
 
 
 @login_required(login_url='/accounts/login')
@@ -34,7 +32,7 @@ def prof(request):
         profile = Profile.objects.all()
         projects = Project.objects.all()
         print(user)
-    return render(request,"all_posts/prof.html",{ "user": user,"profile": profile,"projects": projects})
+    return render(request,"profile.html",{ "user": user,"profile": profile,"projects": projects})
 
 @login_required(login_url='/accounts/login')
 def project(request,id):
@@ -50,10 +48,10 @@ def search(request):
         # owner = request.GET.get("project")
         searched_projects = Project.search_project(title)
         message = f"{title}"
-        return render(request,"all_posts/search.html", {"message": message, "projects": searched_projects})
+        return render(request,"search.html", {"message": message, "projects": searched_projects})
     else:
         message = "There is no such project"
-        return render(request,"all_posts/search.html", {"message": message})
+        return render(request,"search.html", {"message": message})
 
 @login_required(login_url='/accounts/login')
 def new_prof(request):
@@ -70,7 +68,7 @@ def new_prof(request):
         return redirect('prof')
     else:
         form = NewProfForm()
-    return render(request,'registration/new_prof.html',{"form": form,"id":id})
+    return render(request,'new_profile.html',{"form": form,"id":id})
 
 
 @login_required(login_url='/accounts/login')
@@ -84,10 +82,10 @@ def new_project(request):
             project = form.save(commit=False)
             project.profile=profile
             project.save()
-        return redirect('prof')
+        return redirect('profile')
     else:
         form = NewProjectForm()
-    return render(request,'registration/new_project.html',{"form": form,"id":id})
+    return render(request,'new_project.html',{"form": form,"id":id})
 
 @login_required(login_url='/accounts/login')
 def new_review(request):
@@ -104,7 +102,7 @@ def new_review(request):
         return redirect('prof')
     else:
         form = ReviewForm()
-    return render(request,'registration/review.html',{"form": form})
+    return render(request,'review.html',{"form": form})
 
 
 @login_required(login_url='/accounts/login/')
@@ -115,7 +113,7 @@ def admin(request):
 def delete(request,id):
     project = Project.objects.filter(id=id)
     project.delete()
-    return redirect('prof')
+    return redirect('profile')
 
 
 class ProjectList(APIView):

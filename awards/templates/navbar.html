@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" style=" color: black;">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  
+      <nav style="overflow: hidden;  top: 0; width: 100%; padding: 30px; background-color:plum;" class="navbar">
+
+          <a  href="/home"><section class="logo-section"><img class="logo" src="https://trophyawardco.com/wp-content/uploads/2018/03/G1603.jpg" width="100px;"/>
+            <div></div><img class="logoname" src="https://images-na.ssl-images-amazon.com/images/I/817FzYjF%2BjL._SX425_.jpg" width="100px;"/>
+          </section></a>
+          <form class="search-section" role="search" action="">
+            
+            <input type="search" class="input-search form-control" placeholder="&#x1F50D; Search" name="username">
+
+          </form>
+          
+              {% if user.is_authenticated %}
+              <section  class="icons-section"><a style="font-size: 35px;" class="fa fa-compass" href="#"></a><a style="font-size: 35px;" class="fa fa-heart-o" href="#"></a><a style="font-size: 35px;" class="fa fa-user-o" href="/profile/"></a><a data-toggle="modal" data-target="#settings" style="font-size: 35px;" class="fa fa-th" aria-hidden="true" href="#"></a></section>
+              {% else %}
+             
+                <a class='btn btn-default' href="/accounts/login">Login</a>
+              
+  
+              {% endif %}
+            </div>
+      </nav>   
+           
+          
+    
+      <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                  <div class="modal-body">
+                      <ul class="list-group">
+                      <li class="list-group-item text-center"><a href="/accounts/password/change">Change Password</a></li>
+                      <li class="list-group-item text-center"><a href="/logout/">Log Out</a></li>
+                      <li class="list-group-item text-center"><a data-dismiss="modal">Cancel</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+</body>
+</html>

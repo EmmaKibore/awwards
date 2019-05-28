@@ -1,0 +1,49 @@
+{%extends 'base.html'%}
+{% load static%}
+
+{% block content %}
+     <div style="padding-top: 80px; background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3C77rJULqX0cuiHzsLy52nz42IGDUuqR-17_rPmF9HmUPU0Ox); background-size: cover; opacity:0.9 ;" class="container-fluid"> 
+    <div class="row">
+        <div class="col-md-4 ">
+            <div class="lay">
+                
+            </div>
+            <img src="" alt="" width="300px;">
+
+        </div>
+        <div class="col-md-4"> 
+
+        </div>
+        <div class="col-md-4">
+            <div class="signup-fields">
+                <div class="card">
+                    <div style="text-align:center; margin-top: 0px;" class="card-header">
+                        <!-- <img width="200px" height="80px" src="" alt=""> -->
+                    </div>
+                    <div style="text-align:center;" class="card-body">
+                            {% if user.profile.photo %}
+                            <img  src="" alt="profile" class="img-thumbnail rounded-circle">
+                            {% else %}
+                            <img src="https://scontent.cdninstagram.com/vp/52f752721bea625b68494eaa47a0bbbf/5D64258D/t51.2885-15/e35/c0.135.1080.1080a/s480x480/57272287_126657761846539_8940012122965654786_n.jpg?_nc_ht=scontent-lax3-1.cdninstagram.com "alt="random" class="img-thumbnail rounded-circle">
+                            {% endif %}
+                    </div>
+                    <div class="card-footer">
+                            <div>
+                                {%if request_user == currentu_ser%}
+                                
+                                        <a href="/accounts/login" class = "btn btn-sm btn-primary btn-inline"> Continue as {{request.user}}? </a>
+                                    
+                                {% endif%}
+                                    <p class="log" style="display:block">Not {{request.user}}? <a href="/signup">Create Account</a></p>
+                            </div>
+                    </div>
+                        
+                        
+                         
+                    
+                </div>
+                </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
