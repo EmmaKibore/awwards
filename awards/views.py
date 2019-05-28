@@ -37,10 +37,10 @@ def prof(request):
 @login_required(login_url='/accounts/login')
 def project(request,id):
     project = Project.objects.filter(id__icontains = id)
-    return render(request,"all_posts/project",{"project": project})
+    return render(request,"project.html",{"project": project})
 
 
-@login_required(login_url='/accounts/login')
+
 def search(request):
     if 'project' in request.GET and request.GET["project"]:
         title = request.GET.get("project")
@@ -65,7 +65,7 @@ def new_prof(request):
             profile.user = current_user
             # profile=Profile.objects.update()
             profile.save()
-        return redirect('prof')
+        return redirect('profile')
     else:
         form = NewProfForm()
     return render(request,'new_profile.html',{"form": form,"id":id})
@@ -201,5 +201,3 @@ class ProfileDescription(APIView):
 
 
 
-
-# Create your views here.

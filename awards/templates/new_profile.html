@@ -4,21 +4,24 @@
 <div class="container">
   <div class="row">
     <!-- Empty div -->
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
       {% if form.errors %}
         <p> Password or Username is incorrect </p>
       {% endif %}
       <div class="panel panel-default">
 
         <div class="panel-heading">
-          <h3 class="text-center">Add Project</h3>
+          <h3 class="text-center">Edit Profile</h3>
         </div>
         <div class="panel-body">
-          <form  action="{%url 'new_project'%}" method="post" enctype="multipart/form-data">
-            {%csrf_token%}
+          <form  action="{%url 'new_prof'%}" method="POST"  enctype="multipart/form-data" >
+            {% csrf_token %}
             {% bootstrap_form form%}
-            <input type="submit" class="btn btn-success btn-lg" value="Post">
+            <div class="form-group">
+              <input type="submit" class="btn btn-success btn-lg" value="Save">
+            </div>
+            <input type="hidden" name="next" value="{{next}}">
           </form>
         </div>
 
@@ -26,7 +29,7 @@
 
     </div>
     <!-- empty div -->
-    <div class="col-md-4"></div>
+    <div class="col-md-3"></div>
   </div>
 </div>
 
