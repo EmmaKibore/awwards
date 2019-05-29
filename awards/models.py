@@ -9,7 +9,7 @@ from django.core.validators import MaxValueValidator,MinValueValidator
 
 from django.db.models.signals import post_save
 
-from django.db.models import Q
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User,null=True,related_name='profile')

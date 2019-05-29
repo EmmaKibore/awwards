@@ -24,13 +24,13 @@ def home(request):
 
 
 @login_required(login_url='/accounts/login')
-def prof(request):
+def profile(request):
     users =User.objects.all()
 
     for user in users:
         user=user
         profile = Profile.objects.all()
-        projects = Project.objects.all()
+        project = Project.objects.all()
         print(user)
     return render(request,"profile.html",{ "user": user,"profile": profile,"projects": projects})
 
