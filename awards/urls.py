@@ -6,5 +6,12 @@ from . import views
 urlpatterns = [
     url(r'^$',views.home,name='home'),
     url(r'^accounts/profile/$', views.profile, name = 'profile'),
-    url(r"^search/",views.search,name="search"),
+    url(r'^accounts/',include('registration.backends.simple.urls')),
+    url(r'^project/',views.project, name = 'project'),
+    url(r'^search/',views.search, name='search'),
+    url(r'^new_project/',views.new_project, name='new_project'),
+    # url(r'^review/$',views.new_review, name='review'),
 ]     
+
+if settings.DEBUG:
+   urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -14,34 +14,27 @@
           <form class="search-section" role="search" action="">
             
             <input type="search" class="input-search form-control" placeholder="&#x1F50D; Search" name="username">
+            <a href="{% url 'new_project' %}"> Add Project</a>
 
           </form>
           
               {% if user.is_authenticated %}
               <section  class="icons-section"><a style="font-size: 35px;" class="fa fa-compass" href="#"></a><a style="font-size: 35px;" class="fa fa-heart-o" href="#"></a><a style="font-size: 35px;" class="fa fa-user-o" href="/profile/"></a><a data-toggle="modal" data-target="#settings" style="font-size: 35px;" class="fa fa-th" aria-hidden="true" href="#"></a></section>
-              {% else %}
              
-                <a class='btn btn-default' href="/accounts/login">Login</a>
               
-  
-              {% endif %}
+                {% else %}
+                
             </div>
+            <div class="form-group">
+                <a href="{% url 'new_project' %}"> Add Project</a>
+
+                <a class='btn btn-default' href="/accounts/login">Login</a>
+
+                <a href="/accounts/register/"> Sign Up</a>
+              </div>
+              {% endif %}
       </nav>   
            
           
     
-      <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                  <div class="modal-body">
-                      <ul class="list-group">
-                      <li class="list-group-item text-center"><a href="/accounts/password/change">Change Password</a></li>
-                      <li class="list-group-item text-center"><a href="/logout/">Log Out</a></li>
-                      <li class="list-group-item text-center"><a data-dismiss="modal">Cancel</a></li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
-      </div>
-</body>
-</html>
+     

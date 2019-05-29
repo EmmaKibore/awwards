@@ -3,7 +3,7 @@ from django.http  import HttpResponse,Http404,HttpResponseRedirect
 import datetime as dt
 from django.contrib.auth.decorators import login_required
 from .forms import NewProfileForm, NewProjectForm, ReviewForm
-
+from django.core.exceptions import ObjectDoesNotExist
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import  Profile,Project,Review,User
@@ -17,14 +17,14 @@ def home(request):
         date = dt.date.today()
         projects = Project.objects.all()
         # project = Project.objects.filter(id).first()
-        # overall = (project.design+project.usability+project.
-    except DoesNotExist:
+        # overall = (project.design+project.usability+project
+    except Exception as e:
         raise Http404()
     return render(request,"home.html",{"date": date, "projects": projects})
 
 
 @login_required(login_url='/accounts/login')
-def profile(request):
+def profile(request, id):
     users =User.objects.all()
 
     for user in users:
@@ -32,9 +32,9 @@ def profile(request):
         profile = Profile.objects.all()
         project = Project.objects.all()
         print(user)
-    return render(request,"profile.html",{ "user": user,"profile": profile,"projects": projects})
+    return render(request,"profile.html",{ "user": user,"profile": profile,"project": project})
 
-@login_required(login_url='/accounts/login')
+
 def project(request,id):
     project = Project.objects.filter(id__icontains = id)
     return render(request,"project.html",{"project": project})
@@ -82,7 +82,7 @@ def new_project(request):
             project = form.save(commit=False)
             project.profile=profile
             project.save()
-        return redirect('profile')
+        return redirect('home')
     else:
         form = NewProjectForm()
     return render(request,'new_project.html',{"form": form,"id":id})
