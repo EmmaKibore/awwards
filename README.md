@@ -4,6 +4,10 @@ This is a Project rating App
 ## Project Description
 Users can register a new account, log in to it, upload new projects and rate/review existing projects. User should view all projects and user profiles.
 
+## Application
+![Screenshot from 2019-05-30 10-57-25](https://user-images.githubusercontent.com/47333363/58617975-1d69fa00-82ca-11e9-8cc1-fa99a56f6f5d.png)
+
+
 ## Setup/Installation Requirements
 * Internet connection.
 * Python 3, Django installation.
