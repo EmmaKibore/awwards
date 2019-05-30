@@ -19,7 +19,7 @@ class Profile(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
     def __str__(self):
-        return self.user
+        return self.contact 
 
     def save_profile(self):
         self.save()
