@@ -6,7 +6,7 @@
 
  <div class="container">
 
-  <div class="row" style="margin-top:150px;margin-bottom:150px;">
+  <div style="color: white;" class="row" style="margin-top:150px;margin-bottom:150px;">
     <div class="col-md-3"></div>
      <div class="col-md-3">
        <img style='height:200px;width:200px;margin:3%;border-radius:100%;' src="{{ user.profile.prof_pic.url }}" alt="">
@@ -37,7 +37,7 @@
         <img src="{{project.image.url}}" alt="Project Pic">
         <p>Posted <strong>{{project.pub_date|timesince}}</strong> ago</p>
         <p>by <strong>{{project.profile.user}}</strong></p>
-        <a href="{%url 'delete' project.id %}" class="btn btn-danger btn-sm">
+        <a href="{%url 'delete' project.id %}" class="btn btn-sucess btn-sm">
           <i class="glyphicon glyphicon-trash" style="width:80px;font-size:30px;"></i>
         </a>
         <a href="{%url 'new_review' %}"class="btn btn-default btn-sm" id="like">
